@@ -62,11 +62,17 @@
   <ItemGroup>
     <Compile Include="Assets\Library\Library\UGUIKit Flat\Content\Scripts\bl_ProgressBar.cs" />
     <Compile Include="Assets\Library\Library\UGUIKit Flat\Content\Scripts\bl_ToggleSwitcher.cs" />
-    <Compile Include="Assets\scripts\CSVScript\CSVReader.cs" />
-    <Compile Include="Assets\scripts\CSVScript\CSVReaderScript.cs" />
-    <Compile Include="Assets\scripts\UIScript\MainCanvas.cs" />
-    <Compile Include="Assets\scripts\UIScript\NumberManagerScript.cs" />
-    <Compile Include="Assets\scripts\UIScript\OnClickCavasButton.cs" />
+    <Compile Include="Assets\Scripts\CSVScript\CsvFileCommon.cs" />
+    <Compile Include="Assets\Scripts\CSVScript\CsvFileWriter.cs" />
+    <Compile Include="Assets\Scripts\CSVScript\CSVReader.cs" />
+    <Compile Include="Assets\Scripts\CSVScript\CSVReaderScript.cs" />
+    <Compile Include="Assets\Scripts\CSVScript\CSVWriter.cs" />
+    <Compile Include="Assets\Scripts\LottoSaveData.cs" />
+    <Compile Include="Assets\Scripts\Settings.cs" />
+    <Compile Include="Assets\Scripts\TodayLottoScript.cs" />
+    <Compile Include="Assets\Scripts\UIScript\MainCanvas.cs" />
+    <Compile Include="Assets\Scripts\UIScript\NumberManagerScript.cs" />
+    <Compile Include="Assets\Scripts\UIScript\OnClickCavasButton.cs" />
     <None Include="Assets\Library\Library\UGUIKit Flat\ReadMe.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/JACK/Documents/GitHub/FinalLotto/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

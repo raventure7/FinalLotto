@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+
+
 public class NumberManagerScript : MonoBehaviour
 {
     public string nowDate;
