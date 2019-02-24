@@ -14,9 +14,17 @@ public class TodayLottoScript : MonoBehaviour
     }
     private void Start()
     {
-
-        CreateLotto();
+        string nowDate = Settings.GetNowDate();
+        if(PlayerPrefs.GetString("NowDate") != nowDate)
+        {
+            for(int i = 0; i < 5; i++)
+            {
+                CreateLotto();
+            }
+            PlayerPrefs.SetString("NowDate", nowDate);
+        }
     }
+
 
 
     void CreateLotto()

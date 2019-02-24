@@ -14,10 +14,15 @@ public class Settings{
             int fdEndDate = int.Parse(CSVReaderScript.Instance.dateData[i]["fdEndDate"].ToString().Replace("-", ""));
             if (intNowDate <= fdEndDate)
             {
-                return int.Parse(CSVReaderScript.Instance.dateData[i]["fdNum"].ToString()) - 1;
+                return int.Parse(CSVReaderScript.Instance.dateData[i]["fdNum"].ToString());
             }
         }
         return 0;
+    }
+
+    public static string GetNowDate()
+    {
+        return System.DateTime.Now.ToString("yyyy-MM-dd");
     }
 
 }

@@ -1,3 +1,7 @@
 Library/metadata
 Library/PackageCache
 Assets/Library/Library
+Library/ShaderCache
+Temp/
+Library/PlayerDataCache
+Library/StateCache

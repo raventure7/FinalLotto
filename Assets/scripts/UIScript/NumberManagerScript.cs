@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class NumberManagerScript : MonoBehaviour
 {
+    public LottoResultsListScript lottoResultsListScript;
+
     public string nowDate;
     public int drawingNumber; // 회차 정보
     public string drawingDate; //   추첨일
@@ -32,7 +34,7 @@ public class NumberManagerScript : MonoBehaviour
     {
         if(number == 0)
         {
-            number = GetNowDrawingNumber();
+            number = Settings.GetNowDrawingNumber();
             drawingStatus = false;
         }
         drawingNumber = number;
@@ -49,6 +51,30 @@ public class NumberManagerScript : MonoBehaviour
                 mainStatus.text = "당첨 번호 미정";
                 break;
         }
+        SetLottoResultList(drawingNumber);
+    }
+
+    public void SetLottoResultList(int number)
+    {
+        lottoResultsListScript.DeleteList(); // 리스트 제거
+        //List<LottoResult> tmpLottoResults = new List<LottoResult>();
+        Debug.Log(number);
+        if(LottoSaveData.Instance.LottoResults.Exists(e => e.fdNum == number))
+        {
+            for (int i = 0; i < LottoSaveData.Instance.LottoResults.Count; i++)
+            {
+                if (LottoSaveData.Instance.LottoResults[i].fdNum == number)
+                {
+                    //Debug.Log(LottoSaveData.Instance.LottoResults[i].num);
+                    // 생성하기
+                    // 생성 기준 잘 정하기. 구매 예정, 즐찾, 일반 순서
+                    // 별도 리스트 생성해서 회차 번호 넣어 놓고 거기서 정렬해서 출력하면 될듯.
+                    lottoResultsListScript.AddItem(LottoSaveData.Instance.LottoResults[i].num);
+                }
+            }
+        }
+
+
     }
 
     public void MainSetting(int number)
@@ -56,7 +82,7 @@ public class NumberManagerScript : MonoBehaviour
         if (number == 0)
         {
             drawingStatus = false;
-            drawingNumber = GetNowDrawingNumber();
+            drawingNumber = Settings.GetNowDrawingNumber();
         }
         else
         {
@@ -75,6 +101,7 @@ public class NumberManagerScript : MonoBehaviour
     }
 
     //현재 회차 가져오기
+    /*
     public int GetNowDrawingNumber()
     {
         nowDate = System.DateTime.Now.ToString("yyyy-MM-dd");
@@ -89,4 +116,5 @@ public class NumberManagerScript : MonoBehaviour
         }
         return 0;
     }
+    */
 }
