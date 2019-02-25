@@ -15,7 +15,7 @@ public class TodayLottoScript : MonoBehaviour
     private void Start()
     {
         string nowDate = Settings.GetNowDate();
-        if(PlayerPrefs.GetString("NowDate") != nowDate)
+        if (PlayerPrefs.GetString("NowDate") != nowDate)
         {
             for(int i = 0; i < 5; i++)
             {
@@ -29,21 +29,19 @@ public class TodayLottoScript : MonoBehaviour
 
     void CreateLotto()
     {
+        bool check = true;
         lottoResult = new int[6] { 0, 0, 0, 0, 0, 0 };
         for (int i = 0; i<= 5; i++)
         {
-            bool check = false;
+            check = true;
             int rnd = Random.Range(1, 45);
             for(int j = 0; j <= lottoResult.Length -1; j++)
             {
                 if(lottoResult[j] == rnd)
                 {
                     i--;
+                    check = false;
                     break;
-                }
-                else
-                {
-                    check = true;
                 }
             }
 
@@ -59,13 +57,17 @@ public class TodayLottoScript : MonoBehaviour
         int fdNum = Settings.GetNowDrawingNumber(); // 현재 회차 정보
 
         
-        LottoSaveData.Instance.AddData(fdNum, 0, 
+        LottoSaveData.Instance.AddData(fdNum,
+            System.DateTime.Now.ToString("yyyy-MM-dd"),
+            0, // Type
             lottoResult[0],
             lottoResult[1],
             lottoResult[2],
             lottoResult[3],
             lottoResult[4],
-            lottoResult[5]
+            lottoResult[5],
+            false,
+            false
         );
     }
 

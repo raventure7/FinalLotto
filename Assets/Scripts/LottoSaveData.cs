@@ -14,16 +14,21 @@ public class LottoResult
     public int fdNum;
     public string fdDate;
     public int fdType;
-    public int fdNum1;
-    public int fdNum2;
-    public int fdNum3;
-    public int fdNum4;
-    public int fdNum5;
-    public int fdNum6;
+    public int fdBall1;
+    public int fdBall2;
+    public int fdBall3;
+    public int fdBall4;
+    public int fdBall5;
+    public int fdBall6;
+    public bool fdBookmark;
+    public bool fdCopy;
+    public bool fdLucky;
+    public int fdRank;
 }
 
 public class LottoSaveData : MonoBehaviour
 {
+
     static LottoSaveData lottoSaveData;
     public static LottoSaveData Instance
     {
@@ -67,7 +72,7 @@ public class LottoSaveData : MonoBehaviour
     }
 
 
-    public void AddData(int fdNum, int fdType, int fdNum1, int fdNum2, int fdNum3, int fdNum4, int fdNum5, int fdNum6)
+    public void AddData(int fdNum, string fdDate, int fdType, int fdNum1, int fdNum2, int fdNum3, int fdNum4, int fdNum5, int fdNum6, bool fdBookmark, bool fdLucky)
     {
         // fdType 0 : 오늘의 추천
         int lastNum = 0;
@@ -79,24 +84,45 @@ public class LottoSaveData : MonoBehaviour
         {
             num = lastNum,
             fdNum = fdNum,
-            fdDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
+            fdDate = fdDate, 
             fdType = fdType,
-            fdNum1 = fdNum1,
-            fdNum2 = fdNum2,
-            fdNum3 = fdNum3,
-            fdNum4 = fdNum4,
-            fdNum5 = fdNum5,
-            fdNum6 = fdNum6,
-
+            fdBall1 = fdNum1,
+            fdBall2 = fdNum2,
+            fdBall3 = fdNum3,
+            fdBall4 = fdNum4,
+            fdBall5 = fdNum5,
+            fdBall6 = fdNum6,
+            fdBookmark = fdBookmark,
+            fdCopy = false,
+            fdLucky = fdLucky,
+            fdRank = 0
         });
         Debug.Log(LottoResults.Count);
         Save();
     }
 
 
-    public void DeleteData()
+    public void DeleteData(int index)
     {
+        //int index = LottoResults.FindIndex(e => e.num == num);
+        LottoResults.Remove(LottoResults[index]);
 
+        Save();
+    }
+
+    public void UpdateData(int index, string type, bool value)
+    {
+        
+        switch (type)
+        {
+            case "bookmark":
+                LottoResults[index].fdBookmark = value;
+                break;
+            case "lucky":
+                LottoResults[index].fdLucky = value;
+                break;
+        }
+        Save();
     }
 
     public void Clear()

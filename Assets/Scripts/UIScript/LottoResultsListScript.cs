@@ -28,4 +28,13 @@ public class LottoResultsListScript : MonoBehaviour
             }
         }
     }
+
+    /*
+    public void DeleteItem(int num)
+    {
+        DeleteList();
+        LottoSaveData.Instance.DeleteData(num);
+        MainCanvas.Instance.numberManager.SetLottoResultList();
+    }
+    */
 }

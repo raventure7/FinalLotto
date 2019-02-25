@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3917711242561143281}
   - component: {fileID: 3784485955254508840}
   m_Layer: 5
-  m_Name: Star (3)
+  m_Name: Icon4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 3655827636089952718}
   - component: {fileID: 5452939558354781200}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Ball1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,8 +239,9 @@ GameObject:
   - component: {fileID: 616026282671276935}
   - component: {fileID: 5448509116299444307}
   - component: {fileID: 7846415590814893640}
+  - component: {fileID: 724993009029063061}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Del
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4764151, b: 0.4764151, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -302,6 +303,35 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &724993009029063061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231082038568143277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bb7fc897c5aad498962160873b76c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8978143812181901982}
+        m_MethodName: DeleteItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  scaleZoom: {x: 1.5, y: 1.5, z: 1.5}
 --- !u!1 &2340386714515409158
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +498,7 @@ GameObject:
   - component: {fileID: 7763615166423702025}
   - component: {fileID: 8432994142233300002}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Lucky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,7 +651,7 @@ GameObject:
   - component: {fileID: 8186100073674854146}
   - component: {fileID: 8682721518762781835}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: Ball4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -695,7 +725,7 @@ GameObject:
   - component: {fileID: 4073742931178694357}
   - component: {fileID: 2166301782165570430}
   m_Layer: 5
-  m_Name: Star (2)
+  m_Name: Icon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -770,7 +800,7 @@ GameObject:
   - component: {fileID: 7180584270198808516}
   - component: {fileID: 7813211179062771871}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Ball3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +1069,7 @@ GameObject:
   - component: {fileID: 3493176446510083320}
   - component: {fileID: 7702753290819448682}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Ball2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1188,7 +1218,7 @@ GameObject:
   - component: {fileID: 3921542659089514743}
   - component: {fileID: 5176016515565634606}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1234,14 +1264,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.58595234, g: 0.9056604, b: 0.21787111, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: af5721b4523f4fb44b2ce1d910b955ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 12c5dda54251e6e49bf2889d11a458ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1262,7 +1292,7 @@ GameObject:
   - component: {fileID: 8819326107414414128}
   - component: {fileID: 3880515080808997259}
   m_Layer: 5
-  m_Name: Image (5)
+  m_Name: Ball6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1336,7 +1366,7 @@ GameObject:
   - component: {fileID: 1129601421952885424}
   - component: {fileID: 8368482237269911032}
   m_Layer: 5
-  m_Name: Star (1)
+  m_Name: Icon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1496,6 +1526,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   num: 0
+  bookmark: 0
+  iconBall1: {fileID: 5452939558354781200}
+  iconBall2: {fileID: 7702753290819448682}
+  iconBall3: {fileID: 7813211179062771871}
+  iconBall4: {fileID: 8682721518762781835}
+  iconBall5: {fileID: 396420044700118018}
+  iconBall6: {fileID: 3880515080808997259}
+  iconBookmark: {fileID: 3756783715808557426}
+  iconCopy: {fileID: 5176016515565634606}
+  iconLucky: {fileID: 8432994142233300002}
 --- !u!1 &8642743548928392380
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1548,7 @@ GameObject:
   - component: {fileID: 3976497741140581517}
   - component: {fileID: 396420044700118018}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: Ball5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1582,7 +1622,7 @@ GameObject:
   - component: {fileID: 8119467037651404327}
   - component: {fileID: 9008231096189791372}
   m_Layer: 5
-  m_Name: Star
+  m_Name: Icon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1656,8 +1696,9 @@ GameObject:
   - component: {fileID: 4189801228976182504}
   - component: {fileID: 6682048710043755436}
   - component: {fileID: 3756783715808557426}
+  - component: {fileID: 2365936006632208485}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Bookmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1719,3 +1760,32 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2365936006632208485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9209814547044644224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bb7fc897c5aad498962160873b76c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8978143812181901982}
+        m_MethodName: SetBookmark
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  scaleZoom: {x: 1.5, y: 1.5, z: 1.5}

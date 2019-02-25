@@ -14,6 +14,8 @@ public class NumberManagerScript : MonoBehaviour
     public string drawingDate; //   추첨일
     public bool drawingStatus;
 
+    public List<int> noBookmarkList = new List<int>();
+
     // GUI
     public Text mainTitle;
     public Text mainDate;
@@ -39,7 +41,7 @@ public class NumberManagerScript : MonoBehaviour
         }
         drawingNumber = number;
         //MainSetting(number);
-        drawingDate = CSVReaderScript.Instance.dateData[drawingNumber]["fdEndDate"].ToString();
+        drawingDate = CSVReaderScript.Instance.dateData[drawingNumber-1]["fdEndDate"].ToString();
 
         mainTitle.text = drawingNumber.ToString() + "회 로또 번호 관리";
         mainDate.text = "추첨일 ("+drawingDate+")";
@@ -51,9 +53,45 @@ public class NumberManagerScript : MonoBehaviour
                 mainStatus.text = "당첨 번호 미정";
                 break;
         }
-        SetLottoResultList(drawingNumber);
+        SetLottoResultList();
     }
 
+    public void SetLottoResultList()
+    {
+        lottoResultsListScript.DeleteList(); // 리스트 제거
+        //List<LottoResult> tmpLottoResults = new List<LottoResult>();
+        Debug.Log(drawingNumber);
+
+        if (LottoSaveData.Instance.LottoResults.Exists(e => e.fdNum == drawingNumber))
+        {
+            for (int i = 0; i < LottoSaveData.Instance.LottoResults.Count; i++)
+            {
+                if (LottoSaveData.Instance.LottoResults[i].fdNum == drawingNumber)
+                {
+                    // 북마크 부터 출력 하고
+                    if(LottoSaveData.Instance.LottoResults[i].fdBookmark == true)
+                    {
+                        lottoResultsListScript.AddItem(LottoSaveData.Instance.LottoResults[i].num);
+                    }
+                    else
+                    {
+                        // 별도 리스트 넣기
+                        noBookmarkList.Add(i);
+                    }
+
+                }
+            }
+            // 북마크 노 리스트 출력
+            for(int i= 0; i < noBookmarkList.Count; i++)
+            {
+                lottoResultsListScript.AddItem(LottoSaveData.Instance.LottoResults[noBookmarkList[i]].num);
+            }
+            noBookmarkList.Clear();
+        }
+
+
+    }
+    /*
     public void SetLottoResultList(int number)
     {
         lottoResultsListScript.DeleteList(); // 리스트 제거
@@ -76,7 +114,7 @@ public class NumberManagerScript : MonoBehaviour
 
 
     }
-
+    */
     public void MainSetting(int number)
     {
         if (number == 0)
