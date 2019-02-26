@@ -67,7 +67,8 @@ public class TodayLottoScript : MonoBehaviour
             lottoResult[4],
             lottoResult[5],
             false,
-            false
+            false,
+            -1
         );
     }
 

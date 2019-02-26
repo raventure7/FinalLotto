@@ -10,6 +10,7 @@ public class LottoResultsListScript : MonoBehaviour
     {
         Debug.Log(num);
         GameObject _item = Instantiate(lottoResult) as GameObject;
+        _item.name = "LottoResultItem_" + num;
         _item.GetComponent<LottoResultItem>().num = num;
         _item.transform.SetParent(this.transform);
         _item.transform.localScale = new Vector3(1, 1, 1);

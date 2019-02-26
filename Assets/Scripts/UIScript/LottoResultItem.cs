@@ -7,6 +7,8 @@ public class LottoResultItem : MonoBehaviour
 {
     public int num;
     public bool bookmark;
+    public bool lucky;
+    public bool copy;
 
     public Image iconBall1;
     public Image iconBall2;
@@ -34,6 +36,8 @@ public class LottoResultItem : MonoBehaviour
     {
         SetInfo();
         SetBookmarkIcon();
+        SetLuckyIcon();
+        SetCopy();
     }
 
     public void SetInfo()
@@ -54,6 +58,7 @@ public class LottoResultItem : MonoBehaviour
         ballNum6 = LottoSaveData.Instance.LottoResults[index].fdBall6;
 
         bookmark = LottoSaveData.Instance.LottoResults[index].fdBookmark;
+        copy = LottoSaveData.Instance.LottoResults[index].fdCopy;
 
         iconBall1.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum1);
         iconBall2.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum2);
@@ -64,6 +69,7 @@ public class LottoResultItem : MonoBehaviour
     }
     public void DeleteItem()
     {
+        //삭제시 파렌트 번호 조회해서, 부모 복사 활성화 시켜주기.
         MainCanvas.Instance.numberManager.lottoResultsListScript.DeleteList();
         LottoSaveData.Instance.DeleteData(index);
         MainCanvas.Instance.numberManager.SetLottoResultList();
@@ -84,22 +90,53 @@ public class LottoResultItem : MonoBehaviour
         }
         SetBookmarkIcon();
     }
+    public void SetLucky()
+    {
+        if (lucky == false)
+        {
+            lucky = true;
+            LottoSaveData.Instance.UpdateData(index, "lucky", lucky);
+        }
+        /*
+        else
+        {
+            lucky = false;
+            LottoSaveData.Instance.UpdateData(index, "lucky", lucky);
+        }
+        */
+        SetLuckyIcon();
+    }
 
+    public void AlertCopy()
+    {
+        if(copy == false)
+        {
+            AlertMessageScript.Instance.ViewCopy(index);
+        }
+    }
+    public void SetCopy()
+    {
+        copy = true;
+        iconCopy.color = new Color32(255, 255, 255, 255);
+    }
+
+    /*
     public void Copy()
     {
-        /*
         LottoSaveData.Instance.AddData(fdNum,
-                    System.DateTime.Now.ToString("yyyy-MM-dd"),
-                    0, // Type
-                    lottoResult[0],
-                    lottoResult[1],
-                    lottoResult[2],
-                    lottoResult[3],
-                    lottoResult[4],
-                    lottoResult[5]
+                    fdDate,
+                    fdType, // Type
+                    ballNum1,
+                    ballNum2,
+                    ballNum3,
+                    ballNum4,
+                    ballNum5,
+                    ballNum6,
+                    bookmark,
+                    lucky
                 );
-                */
     }
+    */
 
     public void SetBookmarkIcon()
     {
@@ -110,6 +147,18 @@ public class LottoResultItem : MonoBehaviour
         else
         {
             iconBookmark.color = new Color32(255, 255, 255, 255);
+        }
+    }
+
+    public void SetLuckyIcon()
+    {
+        if (lucky == true)
+        {
+            iconLucky.color = new Color32(255, 248, 0, 255);
+        }
+        else
+        {
+            iconLucky.color = new Color32(255, 255, 255, 255);
         }
     }
 }

@@ -1217,6 +1217,7 @@ GameObject:
   - component: {fileID: 3296782227532446173}
   - component: {fileID: 3921542659089514743}
   - component: {fileID: 5176016515565634606}
+  - component: {fileID: 5677618720289336699}
   m_Layer: 5
   m_Name: Copy
   m_TagString: Untagged
@@ -1280,6 +1281,35 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5677618720289336699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6006707857956992641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bb7fc897c5aad498962160873b76c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8978143812181901982}
+        m_MethodName: AlertCopy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  scaleZoom: {x: 1.5, y: 1.5, z: 1.5}
 --- !u!1 &6253556220575237559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   num: 0
   bookmark: 0
+  lucky: 0
   iconBall1: {fileID: 5452939558354781200}
   iconBall2: {fileID: 7702753290819448682}
   iconBall3: {fileID: 7813211179062771871}

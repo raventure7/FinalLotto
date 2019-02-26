@@ -24,6 +24,7 @@ public class LottoResult
     public bool fdCopy;
     public bool fdLucky;
     public int fdRank;
+    public int fdParentNum;
 }
 
 public class LottoSaveData : MonoBehaviour
@@ -72,7 +73,7 @@ public class LottoSaveData : MonoBehaviour
     }
 
 
-    public void AddData(int fdNum, string fdDate, int fdType, int fdNum1, int fdNum2, int fdNum3, int fdNum4, int fdNum5, int fdNum6, bool fdBookmark, bool fdLucky)
+    public void AddData(int fdNum, string fdDate, int fdType, int fdNum1, int fdNum2, int fdNum3, int fdNum4, int fdNum5, int fdNum6, bool fdBookmark, bool fdLucky, int fdParentNum)
     {
         // fdType 0 : 오늘의 추천
         int lastNum = 0;
@@ -95,7 +96,8 @@ public class LottoSaveData : MonoBehaviour
             fdBookmark = fdBookmark,
             fdCopy = false,
             fdLucky = fdLucky,
-            fdRank = 0
+            fdRank = 0,
+            fdParentNum = fdParentNum
         });
         Debug.Log(LottoResults.Count);
         Save();
@@ -120,6 +122,9 @@ public class LottoSaveData : MonoBehaviour
                 break;
             case "lucky":
                 LottoResults[index].fdLucky = value;
+                break;
+            case "copy":
+                LottoResults[index].fdCopy = value;
                 break;
         }
         Save();
