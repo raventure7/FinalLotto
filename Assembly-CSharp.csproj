@@ -67,6 +67,8 @@
     <Compile Include="Assets\Scripts\CSVScript\CSVReader.cs" />
     <Compile Include="Assets\Scripts\CSVScript\CSVReaderScript.cs" />
     <Compile Include="Assets\Scripts\CSVScript\CSVWriter.cs" />
+    <Compile Include="Assets\Scripts\DB\ConnectManager.cs" />
+    <Compile Include="Assets\Scripts\DB\DBManagerScript.cs" />
     <Compile Include="Assets\Scripts\LottoSaveData.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\TodayLottoScript.cs" />

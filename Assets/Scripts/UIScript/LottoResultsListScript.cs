@@ -8,7 +8,6 @@ public class LottoResultsListScript : MonoBehaviour
 
     public void AddItem(int num)
     {
-        Debug.Log(num);
         GameObject _item = Instantiate(lottoResult) as GameObject;
         _item.name = "LottoResultItem_" + num;
         _item.GetComponent<LottoResultItem>().num = num;

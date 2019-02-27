@@ -44,7 +44,8 @@ public class NumberManagerScript : MonoBehaviour
         drawingDate = CSVReaderScript.Instance.dateData[drawingNumber-1]["fdEndDate"].ToString();
 
         mainTitle.text = drawingNumber.ToString() + "회 로또 번호 관리";
-        mainDate.text = "추첨일 ("+drawingDate+")";
+        mainDate.text = "추첨일 : "+ drawingDate.Substring(2,2)+
+            "."+ drawingDate.Substring(5, 2)+"."+ drawingDate.Substring(8, 2)+" (토)";
         switch(drawingStatus)
         {
             case true:
@@ -60,7 +61,7 @@ public class NumberManagerScript : MonoBehaviour
     {
         lottoResultsListScript.DeleteList(); // 리스트 제거
         //List<LottoResult> tmpLottoResults = new List<LottoResult>();
-        Debug.Log(drawingNumber);
+
 
         if (LottoSaveData.Instance.LottoResults.Exists(e => e.fdNum == drawingNumber))
         {
@@ -130,7 +131,6 @@ public class NumberManagerScript : MonoBehaviour
 
     public void Prev()
     {
-        Debug.Log("이전 클릭");
         SetMainGUI(drawingNumber - 1);
     }
     public void Next()

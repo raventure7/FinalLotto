@@ -19,7 +19,7 @@ public class LottoResultItem : MonoBehaviour
     public Image iconBookmark;
     public Image iconCopy;
     public Image iconLucky;
-
+    public Text textType;
 
     int index;
     int fdNum;
@@ -37,7 +37,8 @@ public class LottoResultItem : MonoBehaviour
         SetInfo();
         SetBookmarkIcon();
         SetLuckyIcon();
-        SetCopy();
+        SetCopyIcon();
+        SetTypeText();
     }
 
     public void SetInfo()
@@ -49,7 +50,7 @@ public class LottoResultItem : MonoBehaviour
         fdDate = LottoSaveData.Instance.LottoResults[index].fdDate;
         fdType = LottoSaveData.Instance.LottoResults[index].fdType;
 
-        Debug.Log(LottoSaveData.Instance.LottoResults[index].num);
+        //Debug.Log(LottoSaveData.Instance.LottoResults[index].num);
         ballNum1 = LottoSaveData.Instance.LottoResults[index].fdBall1;
         ballNum2 = LottoSaveData.Instance.LottoResults[index].fdBall2;
         ballNum3 = LottoSaveData.Instance.LottoResults[index].fdBall3;
@@ -66,10 +67,21 @@ public class LottoResultItem : MonoBehaviour
         iconBall4.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum4);
         iconBall5.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum5);
         iconBall6.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum6);
+
+
     }
     public void DeleteItem()
     {
-        //삭제시 파렌트 번호 조회해서, 부모 복사 활성화 시켜주기.
+        int parentNum = LottoSaveData.Instance.LottoResults[index].fdParentNum;
+        if(parentNum != -1)
+        {
+            //삭제시 파렌트 번호 조회해서, 부모 복사 활성화 시켜주기.
+            int parentIndex = LottoSaveData.Instance.LottoResults.FindIndex(e => e.num == parentNum);
+            if(parentIndex >= 0)
+            { LottoSaveData.Instance.UpdateData(parentIndex, "copy", false);
+            }
+        }
+
         MainCanvas.Instance.numberManager.lottoResultsListScript.DeleteList();
         LottoSaveData.Instance.DeleteData(index);
         MainCanvas.Instance.numberManager.SetLottoResultList();
@@ -116,8 +128,12 @@ public class LottoResultItem : MonoBehaviour
     }
     public void SetCopy()
     {
-        copy = true;
-        iconCopy.color = new Color32(255, 255, 255, 255);
+        if(copy == false)
+        {
+            copy = true;
+            LottoSaveData.Instance.UpdateData(index, "copy", copy);
+        }
+        SetCopyIcon();
     }
 
     /*
@@ -137,6 +153,7 @@ public class LottoResultItem : MonoBehaviour
                 );
     }
     */
+
 
     public void SetBookmarkIcon()
     {
@@ -160,5 +177,28 @@ public class LottoResultItem : MonoBehaviour
         {
             iconLucky.color = new Color32(255, 255, 255, 255);
         }
+    }
+    public void SetCopyIcon()
+    {
+        if(copy == true)
+        {
+            iconCopy.color = new Color32(255, 255, 255, 255);
+
+        }
+        else
+        {
+            iconCopy.color = new Color32(149, 231, 56, 255);
+        }
+    }
+    public void SetTypeText()
+    {
+        string str = "";
+        switch (fdType)
+        {
+            case 0:
+                str = "추천번호";
+                break;
+        }
+        textType.text = fdDate.Substring(5,2)+"."+ fdDate.Substring(8, 2) + " " + str;
     }
 }

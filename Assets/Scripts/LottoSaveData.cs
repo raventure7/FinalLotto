@@ -36,13 +36,16 @@ public class LottoSaveData : MonoBehaviour
         get { return lottoSaveData; }
     }
 
+    int totalCount;
     public List<LottoResult> LottoResults = new List<LottoResult>();
 
     public void Awake()
     {
+        totalCount = GetTotalCount();
         lottoSaveData = this;
         Load();
     }
+
     public void Save()
     {
         var binaryFormatter = new BinaryFormatter();
@@ -76,14 +79,17 @@ public class LottoSaveData : MonoBehaviour
     public void AddData(int fdNum, string fdDate, int fdType, int fdNum1, int fdNum2, int fdNum3, int fdNum4, int fdNum5, int fdNum6, bool fdBookmark, bool fdLucky, int fdParentNum)
     {
         // fdType 0 : 오늘의 추천
+        /*
         int lastNum = 0;
         if (LottoResults.Count != 0)
         {
             lastNum = LottoResults.Count + 1;
         }
+        */
+        totalCount++;
         LottoResults.Add(new LottoResult
         {
-            num = lastNum,
+            num = totalCount,
             fdNum = fdNum,
             fdDate = fdDate, 
             fdType = fdType,
@@ -99,8 +105,13 @@ public class LottoSaveData : MonoBehaviour
             fdRank = 0,
             fdParentNum = fdParentNum
         });
-        Debug.Log(LottoResults.Count);
         Save();
+        SetTotalCount(totalCount);
+
+        if (fdParentNum >= 0)
+        {
+            Debug.Log("[Copy]" + fdParentNum + " => " + totalCount);
+        }
     }
 
 
@@ -137,5 +148,13 @@ public class LottoSaveData : MonoBehaviour
         var memoryStream = new MemoryStream();
         binaryFormatter.Serialize(memoryStream, LottoResults);
         PlayerPrefs.SetString("SaveData", Convert.ToBase64String(memoryStream.GetBuffer()));
+    }
+    public int GetTotalCount()
+    {
+        return PlayerPrefs.GetInt("TotalCount");
+    }
+    public void SetTotalCount(int count)
+    {
+        PlayerPrefs.SetInt("TotalCount", count);
     }
 }

@@ -14,6 +14,13 @@ public class TodayLottoScript : MonoBehaviour
     }
     private void Start()
     {
+        /*
+        LottoSaveData.Instance.Clear();
+        for (int i = 0; i < 5; i++)
+        {
+            CreateLotto();
+        }
+        */
         string nowDate = Settings.GetNowDate();
         if (PlayerPrefs.GetString("NowDate") != nowDate)
         {

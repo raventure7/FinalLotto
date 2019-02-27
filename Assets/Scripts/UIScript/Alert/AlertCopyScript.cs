@@ -8,7 +8,6 @@ public class AlertCopyScript : MonoBehaviour
 
     public void YesClick()
     {
-        Debug.Log(copyIndex);
         Copy();
         Reset();
 
@@ -52,7 +51,6 @@ public class AlertCopyScript : MonoBehaviour
     public void hiddenIcon(int parentNum)
     {
         GameObject.Find("LottoResultItem_" + parentNum).GetComponent<LottoResultItem>().SetCopy();
-        Debug.Log(GameObject.Find("LottoResultItem_" + parentNum).name);
         // 컴포넌트에서 네임으로 해당 이름 값을 조회한 후 강제로 변경
     }
 

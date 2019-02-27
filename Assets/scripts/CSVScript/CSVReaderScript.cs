@@ -26,6 +26,7 @@ public class CSVReaderScript : MonoBehaviour
         dateData = CSVReader.Read("csv/date");
     }
 
+
     // Update is called once per frame
     void Update()
     {
