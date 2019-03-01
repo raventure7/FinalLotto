@@ -5,6 +5,8 @@ using UnityEngine;
 public class LottoResultsListScript : MonoBehaviour
 {
     public GameObject lottoResult;
+    public List<int> deleteResults = new List<int>();
+
 
     public void AddItem(int num)
     {
@@ -13,6 +15,14 @@ public class LottoResultsListScript : MonoBehaviour
         _item.GetComponent<LottoResultItem>().num = num;
         _item.transform.SetParent(this.transform);
         _item.transform.localScale = new Vector3(1, 1, 1);
+
+    }
+
+    public void DeleteItem(int num)
+    {
+        Debug.Log("아이템 삭제 : " + "LottoResultItem_" + num);
+        Debug.Log("현재 아이템 삭제 대기 리스트 :" + deleteResults.Count);
+        Destroy(GameObject.Find("LottoResultItem_" + num).gameObject);
 
     }
 
@@ -27,6 +37,15 @@ public class LottoResultsListScript : MonoBehaviour
                     Destroy(childList[i].gameObject);
             }
         }
+    }
+
+    public void DeleteResultList()
+    {
+        if(deleteResults.Count >= 1)
+        {
+            LottoSaveData.Instance.DeleteDatas(deleteResults);
+        }
+        deleteResults.Clear();
     }
 
     /*

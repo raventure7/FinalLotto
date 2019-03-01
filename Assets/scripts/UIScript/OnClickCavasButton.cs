@@ -45,6 +45,10 @@ public class OnClickCavasButton : MonoBehaviour, IPointerClickHandler {
         }
         yield return new WaitForSeconds(0.3f);
         running = false;
+        if (running == false)
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 
 }

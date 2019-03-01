@@ -14,13 +14,15 @@ public class TodayLottoScript : MonoBehaviour
     }
     private void Start()
     {
+
+        //LottoSaveData.Instance.Clear();
         /*
-        LottoSaveData.Instance.Clear();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 100; i++)
         {
             CreateLotto();
         }
         */
+
         string nowDate = Settings.GetNowDate();
         if (PlayerPrefs.GetString("NowDate") != nowDate)
         {
@@ -62,8 +64,9 @@ public class TodayLottoScript : MonoBehaviour
             lottoResult[k++] = sort;
         }
         int fdNum = Settings.GetNowDrawingNumber(); // 현재 회차 정보
+        //fdNum = 847;
 
-        
+
         LottoSaveData.Instance.AddData(fdNum,
             System.DateTime.Now.ToString("yyyy-MM-dd"),
             0, // Type

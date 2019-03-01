@@ -72,8 +72,10 @@
     <Compile Include="Assets\Scripts\LottoSaveData.cs" />
     <Compile Include="Assets\Scripts\Settings.cs" />
     <Compile Include="Assets\Scripts\TodayLottoScript.cs" />
+    <Compile Include="Assets\Scripts\UIScript\Alert\AlertAnalysisScript.cs" />
     <Compile Include="Assets\Scripts\UIScript\Alert\AlertCopyScript.cs" />
     <Compile Include="Assets\Scripts\UIScript\Alert\AlertMessageScript.cs" />
+    <Compile Include="Assets\Scripts\UIScript\Analysis\Analysis.cs" />
     <Compile Include="Assets\Scripts\UIScript\LottoResultItem.cs" />
     <Compile Include="Assets\Scripts\UIScript\LottoResultsListScript.cs" />
     <Compile Include="Assets\Scripts\UIScript\MainCanvas.cs" />

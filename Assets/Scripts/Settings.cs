@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Settings{
-    
+
+    public static List<Dictionary<string, object>> LottoResultData;
     // 현재 회차 정보 가져오기
     public static int GetNowDrawingNumber()
     {
@@ -24,5 +25,6 @@ public class Settings{
     {
         return System.DateTime.Now.ToString("yyyy-MM-dd");
     }
+
 
 }

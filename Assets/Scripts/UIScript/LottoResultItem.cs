@@ -20,8 +20,12 @@ public class LottoResultItem : MonoBehaviour
     public Image iconCopy;
     public Image iconLucky;
     public Text textType;
+    public GameObject objRank;
+    public Text textRank;
+    
 
-    int index;
+    public int index;
+
     int fdNum;
     string fdDate;
     int fdType;
@@ -32,8 +36,11 @@ public class LottoResultItem : MonoBehaviour
     int ballNum5;
     int ballNum6;
 
+    int prizeCount;
+
     private void Start()
     {
+        //this.gameObject.SetActive(false);
         SetInfo();
         SetBookmarkIcon();
         SetLuckyIcon();
@@ -43,6 +50,7 @@ public class LottoResultItem : MonoBehaviour
 
     public void SetInfo()
     {
+
         //인덱스 찾기
         index = LottoSaveData.Instance.LottoResults.FindIndex(e => e.num == num);
 
@@ -68,6 +76,133 @@ public class LottoResultItem : MonoBehaviour
         iconBall5.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum5);
         iconBall6.sprite = Resources.Load<Sprite>("Balls/ball_" + ballNum6);
 
+        {
+            iconBall1.color = new Color32(255, 255, 255, 80);
+            iconBall2.color = new Color32(255, 255, 255, 80);
+            iconBall3.color = new Color32(255, 255, 255, 80);
+            iconBall4.color = new Color32(255, 255, 255, 80);
+            iconBall5.color = new Color32(255, 255, 255, 80);
+            iconBall6.color = new Color32(255, 255, 255, 80);
+        }
+
+        if (MainCanvas.Instance.numberManager.drawingStatus == true)
+        {
+            prizeCount = 0;
+            int count = MainCanvas.Instance.numberManager.lottoResult.Length-1;
+            for(int i =0; i< count; i++)
+            {
+                if (MainCanvas.Instance.numberManager.lottoResult[i] == ballNum1)
+                {
+                    iconBall1.color = new Color32(255, 255, 255, 255);
+                    prizeCount++;
+                }
+                if (MainCanvas.Instance.numberManager.lottoResult[i] == ballNum2)
+                {
+                    iconBall2.color = new Color32(255, 255, 255, 255);
+                    prizeCount++;
+                }
+                if (MainCanvas.Instance.numberManager.lottoResult[i] == ballNum3)
+                {
+                    iconBall3.color = new Color32(255, 255, 255, 255);
+                    prizeCount++;
+                }
+                if (MainCanvas.Instance.numberManager.lottoResult[i] == ballNum4)
+                {
+                    iconBall4.color = new Color32(255, 255, 255, 255);
+                    prizeCount++;
+                }
+                if (MainCanvas.Instance.numberManager.lottoResult[i] == ballNum5)
+                {
+                    iconBall5.color = new Color32(255, 255, 255, 255);
+                    prizeCount++;
+                }
+                if (MainCanvas.Instance.numberManager.lottoResult[i] == ballNum6)
+                {
+                    iconBall6.color = new Color32(255, 255, 255, 255);
+                    prizeCount++;
+                }
+
+                if(prizeCount == 5)
+                {
+                    if (MainCanvas.Instance.numberManager.lottoResult[6] == ballNum1)
+                    {
+                        iconBall1.color = new Color32(255, 255, 255, 255);
+                        prizeCount++;
+                    }
+                    if (MainCanvas.Instance.numberManager.lottoResult[6] == ballNum2)
+                    {
+                        iconBall2.color = new Color32(255, 255, 255, 255);
+                        prizeCount++;
+                    }
+                    if (MainCanvas.Instance.numberManager.lottoResult[6] == ballNum3)
+                    {
+                        iconBall3.color = new Color32(255, 255, 255, 255);
+                        prizeCount++;
+                    }
+                    if (MainCanvas.Instance.numberManager.lottoResult[6] == ballNum4)
+                    {
+                        iconBall4.color = new Color32(255, 255, 255, 255);
+                        prizeCount++;
+                    }
+                    if (MainCanvas.Instance.numberManager.lottoResult[6] == ballNum5)
+                    {
+                        iconBall5.color = new Color32(255, 255, 255, 255);
+                        prizeCount++;
+                    }
+                    if (MainCanvas.Instance.numberManager.lottoResult[6] == ballNum6)
+                    {
+                        iconBall6.color = new Color32(255, 255, 255, 255);
+                        prizeCount++;
+                    }
+                }
+                
+            }
+            if(prizeCount < 2 && bookmark == false)
+            {
+                this.gameObject.SetActive(false);
+                
+                if (!MainCanvas.Instance.numberManager.lottoResultsListScript.deleteResults.Contains(num))
+                {
+                   MainCanvas.Instance.numberManager.lottoResultsListScript.deleteResults.Add(num);
+                }
+                
+
+            }
+
+            if(prizeCount >= 3)
+            {
+                this.GetComponent<Image>().color = new Color32(206, 217, 255, 255);
+                objRank.SetActive(true);
+                switch(prizeCount)
+                {
+                    case 3:
+                        textRank.text = "5등";
+                        break;
+                    case 4:
+                        textRank.text = "4등";
+                        break;
+                    case 5:
+                        textRank.text = "3등";
+                        break;
+                    case 6:
+                        textRank.text = "2등";
+                        break;
+                }
+            }
+            else
+            {
+                objRank.SetActive(false);
+            }
+        }
+        else
+        {
+            iconBall1.color = new Color32(255, 255, 255, 255);
+            iconBall2.color = new Color32(255, 255, 255, 255);
+            iconBall3.color = new Color32(255, 255, 255, 255);
+            iconBall4.color = new Color32(255, 255, 255, 255);
+            iconBall5.color = new Color32(255, 255, 255, 255);
+            iconBall6.color = new Color32(255, 255, 255, 255);
+        }
 
     }
     public void DeleteItem()
@@ -81,10 +216,16 @@ public class LottoResultItem : MonoBehaviour
             { LottoSaveData.Instance.UpdateData(parentIndex, "copy", false);
             }
         }
+        MainCanvas.Instance.numberManager.lottoResultsListScript.DeleteItem(num); // UI삭제
+        LottoSaveData.Instance.DeleteData(index); //리스트 삭제
+        if(MainCanvas.Instance.numberManager.lottoResultsListScript.deleteResults.Count >= 1)
+        {
+            Debug.Log("삭제 대기리스트 존재 : " + MainCanvas.Instance.numberManager.lottoResultsListScript.deleteResults.Count);
+        }
 
-        MainCanvas.Instance.numberManager.lottoResultsListScript.DeleteList();
-        LottoSaveData.Instance.DeleteData(index);
-        MainCanvas.Instance.numberManager.SetLottoResultList();
+
+        //MainCanvas.Instance.numberManager.lottoResultsListScript.DeleteList();
+        //MainCanvas.Instance.numberManager.SetLottoResultList();
     }
 
    
@@ -126,6 +267,12 @@ public class LottoResultItem : MonoBehaviour
             AlertMessageScript.Instance.ViewCopy(index);
         }
     }
+
+    public void AlertAnalysis()
+    {
+        AlertMessageScript.Instance.ViewAnalysis(index);
+    }
+
     public void SetCopy()
     {
         if(copy == false)
@@ -200,5 +347,14 @@ public class LottoResultItem : MonoBehaviour
                 break;
         }
         textType.text = fdDate.Substring(5,2)+"."+ fdDate.Substring(8, 2) + " " + str;
+    }
+
+    public void Delete()
+    {
+        if(prizeCount < 2 && bookmark == false)
+        {
+            MainCanvas.Instance.numberManager.lottoResultsListScript.DeleteItem(num);
+            LottoSaveData.Instance.DeleteData(index);
+        }
     }
 }

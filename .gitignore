@@ -5,3 +5,5 @@ Library/ShaderCache
 Temp/
 Library/PlayerDataCache
 Library/StateCache
+Assets/Scenes
+Assets/Scripts

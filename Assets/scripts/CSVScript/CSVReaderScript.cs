@@ -8,6 +8,7 @@ public class CSVReaderScript : MonoBehaviour
     static CSVReaderScript csvReaderScript;
 
     public List<Dictionary<string, object>> dateData;
+    public List<Dictionary<string, object>> lottoCSVData;
 
     public static CSVReaderScript Instance
     {
@@ -18,12 +19,18 @@ public class CSVReaderScript : MonoBehaviour
     {
         csvReaderScript = this;
         DateRead();
+        LottoCSVRead();
     }
 
     // 회차별 날짜 데이터를 가져온다.
     void DateRead()
     {
         dateData = CSVReader.Read("csv/date");
+    }
+
+    void LottoCSVRead()
+    {
+        lottoCSVData = CSVReader.Read("csv/lotto");
     }
 
 

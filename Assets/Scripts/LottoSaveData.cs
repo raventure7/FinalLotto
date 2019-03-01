@@ -117,10 +117,23 @@ public class LottoSaveData : MonoBehaviour
 
     public void DeleteData(int index)
     {
+        Debug.Log("아이템 삭제 index : " + index);
         //int index = LottoResults.FindIndex(e => e.num == num);
         LottoResults.Remove(LottoResults[index]);
 
         Save();
+    }
+
+
+    public void DeleteDatas(List<int> lists)
+    {
+        for (int i = 0; i < lists.Count; i++)
+        {
+            int index = LottoResults.FindIndex(e => e.num == lists[i]);
+            LottoResults.Remove(LottoResults[index]);
+        }
+        Debug.Log("삭제 갯수 : " + lists.Count);
+        //Save();
     }
 
     public void UpdateData(int index, string type, bool value)

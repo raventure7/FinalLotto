@@ -6,14 +6,20 @@ using System.Text.RegularExpressions;
 public class DBManagerScript : MonoBehaviour
 {
 
+    static DBManagerScript dbManager;
     //public static DBManager Instance;
     private string URL;
     public List<Dictionary<string, object>> data;
     public bool success = false;
 
+    public static DBManagerScript Instance
+    {
+        get { return dbManager; }
+    }
 
     private void Awake()
     {
+        dbManager = this;
         //Instance = this;
         URL = "http://sambong0819.cafe24.com/lotto";
         GetLottoList();
@@ -60,8 +66,8 @@ public class DBManagerScript : MonoBehaviour
         }
         
         data = list;
+        Settings.LottoResultData = list;
         success = true;
-        Debug.Log("DB 호출 성공 : " + data.Count);
     }
 
 
